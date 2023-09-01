@@ -129,7 +129,7 @@ export default {
             console.log(response);
             Swal.fire({
               title: 'Sucesso',
-              text: 'Email enviado com sucesso',
+              text: 'Email enviado com sucesso, em breve entraremos em contato através do email fornecido',
               icon: 'success',
               confirmButtonText: 'Ok'
             })
