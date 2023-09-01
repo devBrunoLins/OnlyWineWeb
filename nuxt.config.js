@@ -17,10 +17,6 @@ export default {
     ]
   },
 
-  publicRuntimeConfig: {
-      api_url: process.env.API_URL
-  },
-
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
@@ -29,6 +25,13 @@ export default {
   plugins: [
     
   ],
+  proxy: {
+    '/api/': {
+      target: 'http://15.228.23.125:3000',
+      pathRewrite: { '^/api/': '' },
+      changeOrigin: true,
+    },
+  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

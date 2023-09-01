@@ -61,6 +61,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
+
 export default {
   data() {
     return {
@@ -83,28 +85,29 @@ export default {
 
       if(!this.validateField('firstName')){
         this.errors.firstName.isDirty = false;
-        return
       }
 
       if(!this.validateField('lastName')){
         this.errors.lastName.isDirty = false;
-        return
       }
 
       if(!this.validateField('email')){
         this.errors.email.isDirty = false;
-        return
       }
 
       if(!this.validateField('message')){
         this.errors.message.isDirty = false;
-        return
       }
 
-      this.sendMail()
+      if(this.validateAllFields()){
+        this.sendMail()
+      }
     },
     validateField(key) {
       return !!this[key]
+    },
+    validateAllFields() {
+      return !!this.firstName && !!this.lastName && !!this.email && !!this.message
     },
     cleanForm(){
       this.errors = {
@@ -121,8 +124,26 @@ export default {
     async sendMail(){
 
       try {
-        await this.$axios.post(`${this.$config.api_url}/send-email`, { title: this.emailTitle, description: this.message, sender: this.email })
-        this.cleanForm()
+        this.$axios.post('/send-email', { title: this.emailTitle, description: this.message, sender: this.email })
+          .then(response => {
+            console.log(response);
+            Swal.fire({
+              title: 'Sucesso',
+              text: 'Email enviado com sucesso',
+              icon: 'success',
+              confirmButtonText: 'Ok'
+            })
+            this.cleanForm()
+          })
+          .catch((error) => {
+            const { response } = error
+            Swal.fire({
+              title: 'Oops...',
+              text: response.data.message,
+              icon: 'error',
+              confirmButtonText: 'Ok'
+            })
+          })
       } catch (error) {
         console.error('Error sending mail: ', error);
       }
