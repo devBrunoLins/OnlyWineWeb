@@ -27,7 +27,7 @@ export default {
   ],
   proxy: {
     '/api/': {
-      target: 'http://15.228.23.125:3000',
+      target: 'https://api.tripmap.com.br',
       pathRewrite: { '^/api/': '' },
       changeOrigin: true,
     },

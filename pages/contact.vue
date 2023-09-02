@@ -124,9 +124,13 @@ export default {
     async sendMail(){
 
       try {
-        this.$axios.post('/send-email', { title: this.emailTitle, description: this.message, sender: this.email })
-          .then(response => {
-            console.log(response);
+        this.$axios.post('/send-email', {
+            title: this.emailTitle,
+            description: this.message,
+            sender: this.email,
+            firstName: this.firstName,
+            lastName: this.lastName
+          }).then(() => {
             Swal.fire({
               title: 'Sucesso',
               text: 'Email enviado com sucesso, em breve entraremos em contato através do email fornecido',
