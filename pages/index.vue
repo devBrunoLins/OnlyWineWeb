@@ -6,7 +6,7 @@
                 <div class="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
                     <div style="width: 44vw;" class="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
                         <h1 class="text-4xl font-medium tracking-tight text-gray-900">
-                            Encontre seu próximo vinho <span class="text-primary">{{ typedText }}<span class="typing-cursor">|</span></span>
+                            Encontre seu próximo <span class="text-primary">{{ typedText }}<span class="typing-cursor">|</span></span>
                         </h1>
                         <p class="mt-6 text-lg text-gray-600">Tomar vinho nunca precisou e nunca precisará de um porquê</p>
                         <div class="mt-8 flex flex-wrap gap-x-6 gap-y-4">
@@ -123,12 +123,10 @@ export default Vue.extend({
       pauseAfterWord: 2000,
       timeout: null as any,
       words: [
-        'Vinho',
-        'Tinto',
-        'Branco',
-        'Rosé',
-        'Espumante',
-        'Harmonização'
+        'vinho tinto',
+        'vinho branco',
+        'vinho rosé',
+        'espumante'
       ]
     }
   },
