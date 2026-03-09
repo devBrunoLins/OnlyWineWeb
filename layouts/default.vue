@@ -53,9 +53,9 @@
     export default {
         head(){
             return {
-                title: 'TripMap - Home',
+                title: 'OnlyWine - Início',
                 meta: [
-                    { hid: 'description', name: 'description', content: 'TripMap - Home' },
+                    { hid: 'description', name: 'description', content: 'OnlyWine - Home' },
                 ],
                 bodyAttrs: {
                     style: 'background-color: #f4f1ea;',
