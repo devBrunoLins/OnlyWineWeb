@@ -58,7 +58,7 @@
                     { hid: 'description', name: 'description', content: 'OnlyWine - Home' },
                 ],
                 bodyAttrs: {
-                    style: 'background-color: #f4f1ea;',
+                    style: 'background-color: #F5DFE5',
                 }
             }
         }
@@ -71,6 +71,6 @@
     }
 
     .background-color {
-        background-color: #f4f1ea;
+        background-color: #F5DFE5;
     }
 </style>

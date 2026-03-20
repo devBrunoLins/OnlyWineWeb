@@ -75,6 +75,12 @@
 </template>
 
 <style scoped>
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
 .bg-default {
     background-color: #BE2C55;
 }
