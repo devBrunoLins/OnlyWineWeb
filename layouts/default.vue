@@ -12,7 +12,7 @@
                         </svg>
                     </a> -->
                     <a aria-label="Home" href="/">
-                        <img style="height: 140px;" src="@/static/logotipo.svg" />
+                        <img style="height: 140px; padding: 30px;" src="@/static/icon.svg" />
                     </a>
                     <!-- <div class="hidden lg:flex lg:gap-10">
                         <a class="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-[0ms]" href="/#features">

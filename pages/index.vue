@@ -19,10 +19,9 @@
                                     <span class="text-sm font-semibold leading-none">App Store</span>
                                 </div>
                             </a>
-                            <a aria-label="Baixe no Google Play" class="inline-flex items-center justify-center rounded-lg transition-colors bg-black text-white hover:bg-gray-900 px-4 py-2.5" href="https://play.google.com/store" target="_blank">
-                                <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 mr-2">
-                                    <path fill="currentColor" d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l1.492-1.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"></path>
-                                </svg>
+                            <a aria-label="Baixe no Google Play" style="display: flex; gap: 4px;" class="inline-flex items-center justify-center rounded-lg transition-colors bg-black text-white hover:bg-gray-900 px-4 py-2.5" href="https://play.google.com/store" target="_blank">
+                                <img style="max-height: 28px;" src="@/static/google-play.svg" />
+                                
                                 <div class="flex flex-col items-start">
                                     <span class="text-xs leading-none mb-0.5">DISPONÍVEL NO</span>
                                     <span class="text-sm font-semibold leading-none">Google Play</span>
