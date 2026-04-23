@@ -71,6 +71,23 @@
                 </div>
         </div>
     </section>
+    <footer class="border-t border-gray-200/60 py-10 text-center">
+      <nav class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600">
+        <NuxtLink
+          to="/politica-de-privacidade"
+          class="hover:text-primary"
+        >
+          Política de privacidade
+        </NuxtLink>
+        <span class="text-gray-300" aria-hidden="true">·</span>
+        <NuxtLink
+          to="/termos-de-servico"
+          class="hover:text-primary"
+        >
+          Termos de serviço
+        </NuxtLink>
+      </nav>
+    </footer>
 </div>
 </template>
 
