@@ -86,6 +86,13 @@
         >
           Termos de serviço
         </NuxtLink>
+        <span class="text-gray-300" aria-hidden="true">·</span>
+        <NuxtLink
+          to="/excluir-conta"
+          class="hover:text-primary"
+        >
+          Exclusão de conta
+        </NuxtLink>
       </nav>
     </footer>
 </div>
