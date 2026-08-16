@@ -9,14 +9,23 @@
  * é assim que o revisor confirma que onlywine.app pertence à organização.
  */
 
-/** Marcador de conteúdo pendente. Facilita achar o que falta: `grep -rn PENDENTE`. */
+/**
+ * Marcador de conteúdo pendente.
+ *
+ * Precisa produzir um texto EVIDENTE. Se virar passthrough (`=> campo`), o
+ * rótulo do campo vaza como se fosse o valor — `zip: PENDENTE("CEP")` passa a
+ * imprimir "São Paulo — SP, CEP, Brasil" no rodapé de todas as páginas — e o
+ * `hasPendingCompanyData` abaixo para de detectar qualquer coisa.
+ *
+ * Para achar o que falta: `grep -rn PREENCHER .`
+ */
 const PENDENTE = (campo: string) => `[PREENCHER: ${campo}]`;
 
 export const company = {
   /** Nome fantasia / marca. */
   name: "OnlyWine",
   /** Razão social exata do registro D-U-N-S. */
-  legalName: PENDENTE("razão social conforme D-U-N-S"),
+  legalName: "Onlywine LTDA",
   /** Dígitos verificadores conferidos. */
   cnpj: "66.931.137/0001-78",
   address: {
@@ -40,8 +49,30 @@ export const addressLine = [
   company.address.country,
 ].join(", ");
 
-/** `true` quando algum dado obrigatório ainda não foi preenchido. */
-export const hasPendingCompanyData = JSON.stringify(company).includes("[PREENCHER:");
+/** Campos de identificação da empresa ainda não preenchidos. */
+export const pendingCompanyFields = Object.entries({
+  "razão social": company.legalName,
+  CNPJ: company.cnpj,
+  logradouro: company.address.street,
+  bairro: company.address.district,
+  cidade: company.address.city,
+  UF: company.address.state,
+  CEP: company.address.zip,
+})
+  .filter(([, value]) => value.includes("[PREENCHER:"))
+  .map(([field]) => field);
+
+export const hasPendingCompanyData = pendingCompanyFields.length > 0;
+
+// Aviso em tempo de build. Publicar com um campo faltando expõe
+// "[PREENCHER: ...]" no rodapé de todas as páginas — justamente para o revisor
+// da Apple que recusou a inscrição por falta de identificação da organização.
+if (typeof window === "undefined" && hasPendingCompanyData) {
+  console.warn(
+    `\n⚠️  OnlyWine — dados da empresa incompletos: ${pendingCompanyFields.join(", ")}.` +
+      `\n    Preencha em lib/site.ts antes de publicar.\n`,
+  );
+}
 
 export const siteUrl = "https://onlywine.app";
 
