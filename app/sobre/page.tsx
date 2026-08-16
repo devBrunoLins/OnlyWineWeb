@@ -98,7 +98,7 @@ export default function Sobre() {
             },
             {
               title: "Clube OnlyWinner",
-              text: "Assinatura opcional com seleção mensal, condições exclusivas e conteúdo em primeira mão.",
+              text: "Assinatura opcional que reduz o preço dos vinhos do catálogo enquanto estiver ativa. Sem caixa mensal e sem fidelidade.",
             },
           ].map((item) => (
             <div key={item.title} className="bg-blush p-8 sm:p-10">

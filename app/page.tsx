@@ -142,8 +142,8 @@ export default function Home() {
         <SectionHeader
           tone="dark"
           eyebrow="Assinatura opcional"
-          title="OnlyWinner, para quem quer constância"
-          lead="Se você não quer decidir toda vez, o clube decide por você — com curadoria explicada e sem prender ninguém."
+          title="OnlyWinner: os mesmos vinhos, por menos"
+          lead="A assinatura do OnlyWine faz uma coisa só, e faz bem: derruba o preço do catálogo para quem a mantém ativa. Nada de caixa mensal — você continua escolhendo o que quer, quando quer."
         />
 
         <div className="mt-16 grid gap-px overflow-hidden rounded-2xl bg-white/12 sm:grid-cols-2">

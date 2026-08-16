@@ -84,27 +84,36 @@ export const steps = [
   {
     title: "Receba em casa",
     description:
-      "Finalize a compra pelo app e acompanhe a entrega. Se preferir constância, " +
-      "o clube OnlyWinner cuida disso todo mês para você.",
+      "Finalize a compra pelo app e acompanhe a entrega. Se você compra com " +
+      "frequência, a assinatura OnlyWinner reduz o preço de cada garrafa.",
   },
 ];
 
+/**
+ * O OnlyWinner é uma assinatura de desconto: com ela ativa, os vinhos do
+ * catálogo saem por menos. Não é clube de caixa mensal e não envolve curadoria
+ * enviada pelo correio — descrever assim seria descrever outro produto.
+ *
+ * Nenhum percentual é citado aqui de propósito: o desconto varia por rótulo.
+ */
 export const clubBenefits = [
   {
-    title: "Seleção mensal explicada",
+    title: "Preço de assinante no catálogo",
     description:
-      "Uma curadoria pensada para o seu perfil, com material explicando por que " +
-      "cada rótulo foi escolhido.",
+      "Com a assinatura ativa, os vinhos do app saem por um valor menor que o de " +
+      "tabela. O desconto varia conforme o rótulo e aparece na hora da compra.",
   },
   {
-    title: "Condições de assinante",
+    title: "Você continua escolhendo",
     description:
-      "Preços e vantagens exclusivas na loja do app para quem mantém a assinatura ativa.",
+      "Não é clube de caixa mensal: nada chega sem você pedir. A assinatura muda o " +
+      "preço, não o que você compra nem quando compra.",
   },
   {
-    title: "Conteúdo em primeira mão",
+    title: "Some com o que já é gratuito",
     description:
-      "Acesso antecipado a novas videoaulas e materiais produzidos pela equipe OnlyWine.",
+      "As videoaulas e o catálogo continuam abertos para qualquer pessoa cadastrada. " +
+      "O OnlyWinner não desbloqueia conteúdo — ele desconta na compra.",
   },
   {
     title: "Cancelamento sem burocracia",
@@ -148,9 +157,11 @@ export const faqs: Faq[] = [
   {
     question: "O que é o clube OnlyWinner?",
     answer:
-      "É a assinatura do OnlyWine. Ela dá acesso a uma seleção mensal com curadoria, " +
-      "condições exclusivas na loja e conteúdo em primeira mão. É opcional — o app " +
-      "funciona normalmente sem ela.",
+      "É a assinatura do OnlyWine, e ela faz uma coisa só: baixar o preço. Com o " +
+      "OnlyWinner ativo, você compra os vinhos do catálogo por um valor menor que o " +
+      "de tabela — o desconto varia conforme o rótulo. Não é clube de caixa mensal: " +
+      "nada chega sem você pedir, e você continua escolhendo o que quer. É opcional, " +
+      "e o app funciona normalmente sem ela.",
   },
   {
     question: "Como cancelo a assinatura?",
