@@ -52,7 +52,7 @@ export default function Home() {
               className="absolute top-1/2 left-1/2 -z-10 h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/15"
             />
             <PhoneFrame
-              src="/app/IntroScreen.png"
+              src="/app/InitPage.PNG"
               alt="Tela de boas-vindas do aplicativo OnlyWine"
               priority
             />
