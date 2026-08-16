@@ -1,0 +1,164 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-karla);
+  --font-heading: var(--font-fraunces);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /* Tokens de marca OnlyWine */
+  --color-blush: var(--blush);
+  --color-deep: var(--deep);
+  --color-deep-foreground: var(--deep-foreground);
+  --color-gold: var(--gold);
+  --color-rule: var(--rule);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/*
+  Tema único e claro, derivado da identidade que já existia no site Nuxt:
+  primary #BE2C55 e o fundo blush #F5DFE5. O blush virou cor de faixa/seção
+  em vez de canvas — 1.500+ palavras sobre rosa saturado cansam a leitura —
+  e o canvas passou a ser um papel levemente rosado (#FBF3F5).
+  Todos os pares de texto/fundo verificados em WCAG AA.
+*/
+:root {
+  --background: oklch(0.9709 0.009 0.13); /* #FBF3F5 papel rosado */
+  --foreground: oklch(0.2418 0.0283 0.24); /* #2B1A1F tinta vinho */
+
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--foreground);
+
+  --primary: oklch(0.5352 0.1822 9.87); /* #BE2C55 */
+  --primary-foreground: oklch(1 0 0);
+
+  --secondary: oklch(0.9231 0.0254 359.17); /* #F5DFE5 */
+  --secondary-foreground: oklch(0.3151 0.1038 9.33);
+
+  --muted: oklch(0.9231 0.0176 355.13);
+  --muted-foreground: oklch(0.4622 0.038 359.16); /* #6B5058 */
+
+  --accent: oklch(0.9231 0.0254 359.17);
+  --accent-foreground: oklch(0.3151 0.1038 9.33);
+
+  --destructive: oklch(0.577 0.245 27.325);
+
+  --border: oklch(0.8852 0.024 354.34); /* #E7D3DA */
+  --input: oklch(0.8852 0.024 354.34);
+  --ring: oklch(0.5352 0.1822 9.87);
+
+  --radius: 0.5rem;
+
+  /* Marca */
+  --blush: oklch(0.9231 0.0254 359.17); /* #F5DFE5 */
+  --deep: oklch(0.3151 0.1038 9.33); /* #5A1226 borgonha */
+  --deep-foreground: oklch(0.9231 0.0254 359.17);
+  --gold: oklch(0.7143 0.1226 82.86); /* #C89B3C filete dourado */
+  --rule: oklch(0.8852 0.024 354.34);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    /* Textura de papel: grão sutil para tirar a chapa do fundo liso */
+    background-image: radial-gradient(
+      oklch(0.5352 0.1822 9.87 / 0.035) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-heading;
+    font-variation-settings: "SOFT" 20, "WONK" 1;
+  }
+
+  /* Português tem muita hifenização ruim em caixa alta larga */
+  ::selection {
+    background: oklch(0.5352 0.1822 9.87);
+    color: white;
+  }
+}
+
+@layer components {
+  /*
+    "Olho" editorial: rótulo em caixa alta espaçada com filete,
+    o motivo que amarra todas as seções do site (referência: rótulo de vinho).
+  */
+  .eyebrow {
+    @apply inline-flex items-center gap-3 font-sans text-[0.6875rem] font-bold tracking-[0.22em] text-primary uppercase;
+  }
+
+  .eyebrow::before {
+    content: "";
+    @apply block h-px w-8 bg-primary/40;
+  }
+
+  /* Filete duplo, como a borda de um rótulo */
+  .rule-double {
+    border-top: 1px solid var(--rule);
+    box-shadow: 0 3px 0 -2px var(--rule);
+  }
+}
+
+/* Revelação escalonada no carregamento — CSS puro, sem depender de JS.
+   O conteúdo permanece no DOM e legível caso animações estejam desativadas. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

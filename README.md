@@ -1,69 +1,68 @@
-# front-onlywine
+# OnlyWine — site institucional
 
-## Build Setup
+Site público de [onlywine.app](https://onlywine.app). Next.js 16 (App Router),
+TypeScript, Tailwind CSS v4 e shadcn/ui. Hospedado na Vercel (`only-wine-web`).
+
+## Rodando localmente
 
 ```bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
+npm install
+npm run dev     # http://localhost:3001
+npm run build   # build de produção
+npm run lint
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+Copie `.env.example` para `.env.local` e preencha se for testar o formulário
+de contato.
 
-## Special Directories
+## ⚠️ Pendências antes de publicar
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+1. **Dados da empresa** — preencher em [`lib/site.ts`](lib/site.ts).
+   Rode `grep -rn "PREENCHER" .` para achar tudo o que falta.
+   A **razão social precisa bater caractere a caractere** com o registro
+   D-U-N-S usado na inscrição do Apple Developer Program.
+2. **Screenshots do app** — cinco arquivos em `public/app/`:
+   `descoberta.png`, `ficha-do-vinho.png`, `carrinho.png`, `favoritos.png`,
+   `videoaulas.png`. Proporção 366×729. Enquanto não existirem, os componentes
+   `PhoneFrame` mostram um placeholder identificado em vez de imagem quebrada.
+3. **Videoaulas** — trocar os temas genéricos de `/aprenda` pelos títulos reais
+   das aulas gravadas (busque por `TODO(conteúdo)`).
+4. **Resend** — verificar o domínio `onlywine.app` e configurar `RESEND_API_KEY`
+   e `CONTACT_FROM` na Vercel.
+5. **Links das lojas** — quando o app for publicado, preencher `stores` em
+   [`lib/site.ts`](lib/site.ts). Os selos viram links automaticamente.
 
-### `assets`
+## URLs que não podem mudar
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+Estão registradas nos consoles da App Store e do Google Play e em documentos
+legais:
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+- `/politica-de-privacidade`
+- `/termos-de-servico`
+- `/excluir-conta`
 
-### `components`
+A página de exclusão chama Cloud Functions do projeto Firebase `onlywine`
+(região `southamerica-east1`), definidas em **outro repositório**
+(`OnlyWine/functions/src/accountDeletion.ts`). As URLs estão em
+[`lib/account-deletion.ts`](lib/account-deletion.ts) e são contrato com o
+backend.
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+## Estrutura
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+```
+app/                 rotas (App Router) + robots.ts, sitemap.ts, opengraph-image.tsx
+  api/contato/       Route Handler do formulário (Resend)
+components/          componentes de UI
+  ui/                componentes do shadcn (destino registrado em components.json)
+lib/site.ts          identidade da empresa, navegação, status nas lojas
+lib/content.ts       copy editorial (funcionalidades, passos, clube, FAQ)
+```
 
-### `layouts`
+## Contexto histórico
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+Este site substitui uma versão em Nuxt 2 / Vue 2 (ambos em fim de vida) cuja
+home tinha ~30 palavras visíveis. A inscrição da OnlyWine no Apple Developer
+Program foi recusada por "falta de conteúdo substancial" e por não associar o
+domínio a uma pessoa jurídica. A reconstrução ataca os dois pontos: o site
+passou a ter ~5.300 palavras e publica a identidade legal da empresa em todas
+as páginas.
