@@ -23,23 +23,30 @@ de contato.
    registro D-U-N-S da inscrição — a Receita registra em caixa alta
    (`ONLYWINE LTDA`), e o revisor da Apple compara literalmente.
    O build avisa se algum campo for esvaziado.
-2. **Screenshots do app** — cinco arquivos em `public/app/`:
-   `descoberta.png`, `ficha-do-vinho.png`, `carrinho.png`, `favoritos.png`,
-   `videoaulas.png`. Proporção 366×729. Enquanto não existirem, o `PhoneFrame`
-   mostra um placeholder identificado em vez de imagem quebrada, e o carrossel
-   do hero fica em modo estático. Ao adicionar os arquivos, o carrossel passa a
-   girar sozinho — não é preciso mexer em código.
-3. **Videoaulas** — trocar os temas genéricos de `/aprenda` pelos títulos reais
-   das aulas gravadas (busque por `TODO(conteúdo)`).
-4. **Resend** (opcional) — o formulário de contato só é renderizado quando
+2. ~~Screenshots do app~~ — **em `public/app/`** (`InitPage`, `HomeScreen`,
+   `FilterPage`, `DetailPage`, `Location`, `VideosPage`), 1170×2532.
+   Novas telas: adicione o arquivo e registre em `features`
+   ([`lib/content.ts`](lib/content.ts)); o carrossel do hero acompanha sozinho.
+   Arquivo ausente vira placeholder identificado, nunca imagem quebrada.
+3. ~~Videoaulas~~ — `/aprenda` lista as aulas reais lidas da aba Vídeos.
+4. **`Location.PNG` expõe localização pessoal** — o print mostra
+   "Estrada das Mulatas - Cotia" em *Usar minha localização*. É posição de GPS
+   do aparelho, num site público e indexável. Substitua por um print com a
+   localização desligada, ou remova a tela de `features`.
+5. **Resend** (opcional) — o formulário de contato só é renderizado quando
    `RESEND_API_KEY` e `CONTACT_FROM` existem no ambiente. Sem elas, `/contato`
    mostra o e-mail de atendimento em destaque, sem formulário — nada aparece
    quebrado, e o critério de contato da Apple continua atendido.
-   Para ligar: crie a chave em resend.com, verifique o domínio `onlywine.app`
-   em Settings → Domains (registros DNS) e adicione as duas variáveis na Vercel
-   em Settings → Environment Variables. Um novo deploy é necessário: a checagem
+   Para ligar: crie a chave em resend.com, verifique o domínio em
+   Settings → Domains e adicione as duas variáveis na Vercel em
+   Settings → Environment Variables. Um novo deploy é necessário: a checagem
    acontece no build.
-5. **Links das lojas** — quando o app for publicado, preencher `stores` em
+   **O domínio do `CONTACT_FROM` precisa ser exatamente um dos verificados.**
+   Hoje o verificado é `updates.onlywine.app` — enviar de `@onlywine.app`
+   é rejeitado, porque o Resend trata apex e subdomínio como domínios
+   distintos. Falhas de envio aparecem nos logs da Vercel com a causa do
+   Resend (`[contato] falha ao enviar via Resend: ...`).
+6. **Links das lojas** — quando o app for publicado, preencher `stores` em
    [`lib/site.ts`](lib/site.ts). Os selos viram links automaticamente.
 
 ## URLs que não podem mudar

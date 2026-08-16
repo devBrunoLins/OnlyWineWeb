@@ -65,7 +65,7 @@ export default function Home() {
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <SectionHeader
             eyebrow="O que é o OnlyWine"
-            title={<>Vinho sem nariz empinado</>}
+            title={<>Desafrescalhando o mundo do vinho</>}
           />
 
           <div className="max-w-2xl space-y-6 text-lg leading-relaxed text-pretty text-muted-foreground">

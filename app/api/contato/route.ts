@@ -107,10 +107,21 @@ export async function POST(request: Request) {
       `,
     });
 
-    if (error) throw new Error(error.message);
+    if (error) throw new Error(`${error.name}: ${error.message}`);
 
     return NextResponse.json({ ok: true });
-  } catch {
+  } catch (cause) {
+    /*
+      Registrar a causa real é essencial: os erros do Resend são específicos e
+      acionáveis ("The onlywine.app domain is not verified", "API key is
+      invalid"). Sem este log, a única pista é a mensagem genérica abaixo, e
+      diagnosticar exige reproduzir a chamada por fora da aplicação.
+
+      A causa fica no servidor (logs da Vercel), nunca na resposta: ela pode
+      conter detalhes de infraestrutura que não interessam a quem escreveu.
+    */
+    console.error("[contato] falha ao enviar via Resend:", cause);
+
     return NextResponse.json(
       {
         error: `Não conseguimos enviar sua mensagem agora. Tente de novo ou escreva para ${company.email}.`,
