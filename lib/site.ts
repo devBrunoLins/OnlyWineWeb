@@ -1,25 +1,15 @@
 /**
  * Fonte única de verdade da identidade do site.
  *
- * ⚠️ OS CAMPOS MARCADOS COM `PENDENTE` PRECISAM SER PREENCHIDOS ANTES DO DEPLOY.
- *
  * A inscrição no Apple Developer Program foi recusada porque o site não
  * associava o domínio a uma pessoa jurídica. A razão social abaixo precisa
  * bater CARACTERE A CARACTERE com o registro D-U-N-S usado na inscrição —
  * é assim que o revisor confirma que onlywine.app pertence à organização.
- */
-
-/**
- * Marcador de conteúdo pendente.
  *
- * Precisa produzir um texto EVIDENTE. Se virar passthrough (`=> campo`), o
- * rótulo do campo vaza como se fosse o valor — `zip: PENDENTE("CEP")` passa a
- * imprimir "São Paulo — SP, CEP, Brasil" no rodapé de todas as páginas — e o
- * `hasPendingCompanyData` abaixo para de detectar qualquer coisa.
- *
- * Para achar o que falta: `grep -rn PREENCHER .`
+ * Estes dados aparecem no rodapé de TODAS as páginas, em /sobre, em /contato e
+ * como controlador na política de privacidade. Esvaziar qualquer campo aqui
+ * desfaz o motivo pelo qual o site foi reconstruído — por isso o build avisa.
  */
-const PENDENTE = (campo: string) => `[PREENCHER: ${campo}]`;
 
 export const company = {
   /** Nome fantasia / marca. */
@@ -33,7 +23,8 @@ export const company = {
     district: "Bela Vista",
     city: "São Paulo",
     state: "SP",
-    zip: PENDENTE("CEP"),
+    /** CEP de grande usuário do Edifício Maria José; confere na base dos Correios. */
+    zip: "01310-902",
     country: "Brasil",
   },
   email: "contact@onlywine.app",
@@ -49,7 +40,13 @@ export const addressLine = [
   company.address.country,
 ].join(", ");
 
-/** Campos de identificação da empresa ainda não preenchidos. */
+/**
+ * Campos de identificação obrigatórios que estejam vazios ou com placeholder.
+ *
+ * Guarda contra regressão: hoje está tudo preenchido, e precisa continuar
+ * assim. Um campo vazio some silenciosamente do rodapé; um placeholder aparece
+ * como tal para quem estiver lendo a página.
+ */
 export const pendingCompanyFields = Object.entries({
   "razão social": company.legalName,
   CNPJ: company.cnpj,
@@ -59,14 +56,13 @@ export const pendingCompanyFields = Object.entries({
   UF: company.address.state,
   CEP: company.address.zip,
 })
-  .filter(([, value]) => value.includes("[PREENCHER:"))
+  .filter(([, value]) => !value.trim() || /PREENCHER|TODO|XXX/i.test(value))
   .map(([field]) => field);
 
 export const hasPendingCompanyData = pendingCompanyFields.length > 0;
 
-// Aviso em tempo de build. Publicar com um campo faltando expõe
-// "[PREENCHER: ...]" no rodapé de todas as páginas — justamente para o revisor
-// da Apple que recusou a inscrição por falta de identificação da organização.
+// Aviso em tempo de build: publicar sem identificação completa da organização
+// reproduz exatamente o motivo da recusa da Apple.
 if (typeof window === "undefined" && hasPendingCompanyData) {
   console.warn(
     `\n⚠️  OnlyWine — dados da empresa incompletos: ${pendingCompanyFields.join(", ")}.` +

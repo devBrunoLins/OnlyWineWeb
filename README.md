@@ -17,10 +17,12 @@ de contato.
 
 ## ⚠️ Pendências antes de publicar
 
-1. **Dados da empresa** — preencher em [`lib/site.ts`](lib/site.ts).
-   Rode `grep -rn "PREENCHER" .` para achar tudo o que falta.
-   A **razão social precisa bater caractere a caractere** com o registro
-   D-U-N-S usado na inscrição do Apple Developer Program.
+1. ~~Dados da empresa~~ — **preenchidos** em [`lib/site.ts`](lib/site.ts)
+   (Onlywine LTDA, CNPJ 66.931.137/0001-78, Av. Paulista 326, 01310-902).
+   Confirme apenas que a **razão social bate caractere a caractere** com o
+   registro D-U-N-S da inscrição — a Receita registra em caixa alta
+   (`ONLYWINE LTDA`), e o revisor da Apple compara literalmente.
+   O build avisa se algum campo for esvaziado.
 2. **Screenshots do app** — cinco arquivos em `public/app/`:
    `descoberta.png`, `ficha-do-vinho.png`, `carrinho.png`, `favoritos.png`,
    `videoaulas.png`. Proporção 366×729. Enquanto não existirem, o `PhoneFrame`
