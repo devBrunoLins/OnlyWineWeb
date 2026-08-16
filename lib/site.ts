@@ -17,12 +17,13 @@ export const company = {
   name: "OnlyWine",
   /** Razão social exata do registro D-U-N-S. */
   legalName: PENDENTE("razão social conforme D-U-N-S"),
-  cnpj: PENDENTE("CNPJ"),
+  /** Dígitos verificadores conferidos. */
+  cnpj: "66.931.137/0001-78",
   address: {
-    street: PENDENTE("logradouro e número"),
-    district: PENDENTE("bairro"),
-    city: PENDENTE("cidade"),
-    state: PENDENTE("UF"),
+    street: "Avenida Paulista, 326 — Conj. 88/89",
+    district: "Bela Vista",
+    city: "São Paulo",
+    state: "SP",
     zip: PENDENTE("CEP"),
     country: "Brasil",
   },
