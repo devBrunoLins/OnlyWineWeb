@@ -23,8 +23,10 @@ de contato.
    D-U-N-S usado na inscrição do Apple Developer Program.
 2. **Screenshots do app** — cinco arquivos em `public/app/`:
    `descoberta.png`, `ficha-do-vinho.png`, `carrinho.png`, `favoritos.png`,
-   `videoaulas.png`. Proporção 366×729. Enquanto não existirem, os componentes
-   `PhoneFrame` mostram um placeholder identificado em vez de imagem quebrada.
+   `videoaulas.png`. Proporção 366×729. Enquanto não existirem, o `PhoneFrame`
+   mostra um placeholder identificado em vez de imagem quebrada, e o carrossel
+   do hero fica em modo estático. Ao adicionar os arquivos, o carrossel passa a
+   girar sozinho — não é preciso mexer em código.
 3. **Videoaulas** — trocar os temas genéricos de `/aprenda` pelos títulos reais
    das aulas gravadas (busque por `TODO(conteúdo)`).
 4. **Resend** — verificar o domínio `onlywine.app` e configurar `RESEND_API_KEY`

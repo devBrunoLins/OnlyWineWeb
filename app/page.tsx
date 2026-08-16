@@ -4,6 +4,7 @@ import { PhoneFrame } from "@/components/phone-frame";
 import { Section, SectionHeader } from "@/components/section";
 import { StoreBadges } from "@/components/store-badges";
 import { Typewriter } from "@/components/typewriter";
+import PhoneMockupBasic from "@/components/ui/phone-mockups-1";
 import { clubBenefits, faqs, features, steps } from "@/lib/content";
 import { company } from "@/lib/site";
 
@@ -16,8 +17,14 @@ export default function Home() {
           <div>
             <p className="eyebrow rise">Aplicativo de vinho · Brasil</p>
 
+            {/* A palavra animada ocupa uma linha própria (`block`): sem isso o
+                H1 muda de número de linhas conforme o texto digita e apaga, e
+                todo o hero abaixo dele fica pulando. */}
             <h1 className="rise mt-7 text-[2.75rem] leading-[1.02] font-semibold tracking-tight text-balance text-deep sm:text-6xl lg:text-[4.25rem]">
-              Encontre seu próximo <Typewriter />
+              Encontre seu próximo{" "}
+              <span className="block min-h-[1.05em]">
+                <Typewriter />
+              </span>
             </h1>
 
             <p
@@ -44,11 +51,7 @@ export default function Home() {
               aria-hidden="true"
               className="absolute top-1/2 left-1/2 -z-10 h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/15"
             />
-            <PhoneFrame
-              src="/IntroScreen.png"
-              alt="Tela inicial do aplicativo OnlyWine"
-              priority
-            />
+            <PhoneMockupBasic />
           </div>
         </div>
       </section>
