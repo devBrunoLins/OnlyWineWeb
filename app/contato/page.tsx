@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ContactForm } from "@/components/contact-form";
+import { isContactFormConfigured } from "@/lib/contact";
 import { addressLine, company } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contato",
   description:
-    "Fale com a equipe OnlyWine: e-mail de atendimento, dados da empresa e formulário de contato para dúvidas, sugestões e suporte.",
+    "Fale com a equipe OnlyWine: e-mail de atendimento e dados da empresa para dúvidas sobre o app, pedidos, assinatura, privacidade e parcerias.",
   alternates: { canonical: "/contato" },
 };
 
@@ -20,6 +21,8 @@ export const metadata: Metadata = {
  * que clientes consigam pedir assistência.
  */
 export default function Contato() {
+  const formReady = isContactFormConfigured();
+
   return (
     <>
       <section className="bg-blush">
@@ -43,7 +46,7 @@ export default function Contato() {
       </section>
 
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
-        <ContactForm />
+        {formReady ? <ContactForm /> : <EmailFallback />}
 
         <aside className="space-y-10">
           <section>
@@ -106,5 +109,40 @@ export default function Contato() {
         </aside>
       </div>
     </>
+  );
+}
+
+/**
+ * Renderizado quando o Resend ainda não foi configurado.
+ *
+ * Mostrar um formulário que falha no envio é pior do que não ter formulário:
+ * a pessoa preenche tudo para descobrir no fim que não funciona. Aqui o canal
+ * é o e-mail, apresentado como escolha e não como plano B.
+ */
+function EmailFallback() {
+  return (
+    <div className="rounded-2xl border border-rule bg-card p-7 sm:p-10">
+      <h2 className="font-heading text-2xl font-semibold text-deep">
+        Escreva para a gente
+      </h2>
+      <p className="mt-4 leading-relaxed text-muted-foreground">
+        Nosso atendimento é por e-mail. Conte o que você precisa — dúvida sobre o
+        app, um pedido, a assinatura OnlyWinner, privacidade ou parceria — e
+        respondemos em dias úteis.
+      </p>
+
+      <a
+        href={`mailto:${company.email}`}
+        className="mt-7 inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 font-medium text-primary-foreground transition-colors hover:bg-deep"
+      >
+        Escrever para {company.email}
+        <span aria-hidden="true">→</span>
+      </a>
+
+      <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+        Se o seu aparelho não abrir o aplicativo de e-mail automaticamente, copie
+        o endereço acima e escreva do jeito que preferir.
+      </p>
+    </div>
   );
 }

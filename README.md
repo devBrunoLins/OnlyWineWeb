@@ -31,8 +31,14 @@ de contato.
    girar sozinho — não é preciso mexer em código.
 3. **Videoaulas** — trocar os temas genéricos de `/aprenda` pelos títulos reais
    das aulas gravadas (busque por `TODO(conteúdo)`).
-4. **Resend** — verificar o domínio `onlywine.app` e configurar `RESEND_API_KEY`
-   e `CONTACT_FROM` na Vercel.
+4. **Resend** (opcional) — o formulário de contato só é renderizado quando
+   `RESEND_API_KEY` e `CONTACT_FROM` existem no ambiente. Sem elas, `/contato`
+   mostra o e-mail de atendimento em destaque, sem formulário — nada aparece
+   quebrado, e o critério de contato da Apple continua atendido.
+   Para ligar: crie a chave em resend.com, verifique o domínio `onlywine.app`
+   em Settings → Domains (registros DNS) e adicione as duas variáveis na Vercel
+   em Settings → Environment Variables. Um novo deploy é necessário: a checagem
+   acontece no build.
 5. **Links das lojas** — quando o app for publicado, preencher `stores` em
    [`lib/site.ts`](lib/site.ts). Os selos viram links automaticamente.
 
