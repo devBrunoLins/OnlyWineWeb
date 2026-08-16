@@ -51,7 +51,11 @@ export default function Home() {
               aria-hidden="true"
               className="absolute top-1/2 left-1/2 -z-10 h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/15"
             />
-            <PhoneMockupBasic />
+            <PhoneFrame
+              src="/IntroScreen.png"
+              alt="Tela de boas-vindas do aplicativo OnlyWine"
+              priority
+            />
           </div>
         </div>
       </section>
@@ -87,44 +91,47 @@ export default function Home() {
         </div>
       </Section>
 
+      {/* ── Telas do app (carrossel) ───────────────────────────────────── */}
+      <Section id="telas" tone="blush">
+        <SectionHeader
+          align="center"
+          eyebrow="Veja por dentro"
+          title="As telas do OnlyWine"
+          lead="Da primeira recomendação ao pedido a caminho de casa."
+        />
+
+        <div className="mt-16">
+          <PhoneMockupBasic />
+        </div>
+      </Section>
+
       {/* ── Funcionalidades ────────────────────────────────────────────── */}
-      <Section tone="blush">
+      {/* Grade de texto, sem mockups: os screenshots são a vitrine da seção
+          acima, e repeti-los aqui só alongava a página sem acrescentar nada. */}
+      <Section>
         <SectionHeader
           eyebrow="Dentro do app"
           title="Tudo o que você faz no OnlyWine"
           lead="Cinco frentes que funcionam juntas — descobrir, entender, comprar, guardar e aprender."
         />
 
-        <div className="mt-20 space-y-24 sm:space-y-32">
+        <div className="mt-16 grid gap-x-14 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => (
-            <article
-              key={feature.title}
-              className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-20 ${
-                index % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
-              }`}
-            >
-              <div>
-                <div className="flex items-baseline gap-4">
-                  <span className="font-heading text-5xl leading-none font-semibold text-primary/25">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <p className="eyebrow">{feature.eyebrow}</p>
-                </div>
-
-                <h3 className="mt-5 text-3xl leading-tight font-semibold tracking-tight text-balance text-deep sm:text-[2.125rem]">
-                  {feature.title}
-                </h3>
-
-                <p className="mt-5 max-w-lg text-lg leading-relaxed text-pretty text-muted-foreground">
-                  {feature.description}
-                </p>
+            <article key={feature.title} className="rule-double pt-7">
+              <div className="flex items-baseline gap-3">
+                <span className="font-heading text-3xl leading-none font-semibold text-primary/25">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <p className="eyebrow">{feature.eyebrow}</p>
               </div>
 
-              <PhoneFrame
-                src={feature.image}
-                alt={`OnlyWine — ${feature.title}`}
-                label={feature.eyebrow}
-              />
+              <h3 className="mt-4 font-heading text-2xl leading-snug font-semibold text-balance text-deep">
+                {feature.title}
+              </h3>
+
+              <p className="mt-4 leading-relaxed text-pretty text-muted-foreground">
+                {feature.description}
+              </p>
             </article>
           ))}
         </div>
