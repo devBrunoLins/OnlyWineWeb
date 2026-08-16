@@ -16,7 +16,11 @@ export function PhoneShell({
 }) {
   return (
     <div
-      className={`relative aspect-[366/729] rounded-[2.6rem] bg-deep p-[0.6rem] shadow-[0_28px_60px_-18px_rgba(90,18,38,0.45),0_2px_0_0_rgba(255,255,255,0.18)_inset] ${className}`}
+      // 390/844 é a proporção real dos screenshots (1170×2532, iPhone a 3x).
+      // A anterior (366/729) vinha do phone-frame.svg do template Nuxt e cortava
+      // topo e rodapé de toda tela — justo onde ficam a barra de status e a
+      // navegação do app.
+      className={`relative aspect-[390/844] rounded-[2.6rem] bg-deep p-[0.6rem] shadow-[0_28px_60px_-18px_rgba(90,18,38,0.45),0_2px_0_0_rgba(255,255,255,0.18)_inset] ${className}`}
     >
       <div className="relative h-full w-full overflow-hidden rounded-[2.05rem] bg-blush">
         {children}

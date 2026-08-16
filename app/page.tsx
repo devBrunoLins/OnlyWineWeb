@@ -52,7 +52,7 @@ export default function Home() {
               className="absolute top-1/2 left-1/2 -z-10 h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/15"
             />
             <PhoneFrame
-              src="/IntroScreen.png"
+              src="/app/IntroScreen.png"
               alt="Tela de boas-vindas do aplicativo OnlyWine"
               priority
             />
@@ -75,17 +75,17 @@ export default function Home() {
             </p>
             <p>
               O OnlyWine nasceu para resolver exatamente esse desconforto. Em vez
-              de uma vitrine com centenas de rótulos e nenhuma orientação, o app
-              parte do que <em>você</em> já gosta e explica cada indicação em
-              português claro: por que aquele vinho combina com você, com o que
-              serve, a que temperatura, quanto custa.
+              de uma vitrine com centenas de rótulos e nenhuma orientação, cada
+              vinho chega explicado em português claro: de onde vem, de que uva é
+              feito, qual o estilo, com o que combina e quanto custa — antes
+              mesmo de você abrir a ficha.
             </p>
             <p>
-              Da descoberta até a garrafa na sua mesa, tudo acontece no mesmo
-              lugar: recomendação com curadoria, compra com entrega em casa,
-              favoritos que viram a sua adega pessoal e videoaulas gratuitas para
-              quem quiser entender o que está bebendo. Sem assinatura obrigatória
-              e sem vocabulário que ninguém usa fora de uma degustação.
+              Da escolha até a garrafa na sua mesa, tudo acontece no mesmo lugar:
+              filtros por país, tipo e preço, favoritos, carrinho com entrega em
+              casa e videoaulas gratuitas para quem quiser entender o que está
+              bebendo. Sem assinatura obrigatória e sem vocabulário que ninguém
+              usa fora de uma degustação.
             </p>
           </div>
         </div>
@@ -97,7 +97,7 @@ export default function Home() {
           align="center"
           eyebrow="Veja por dentro"
           title="As telas do OnlyWine"
-          lead="Da primeira recomendação ao pedido a caminho de casa."
+          lead="Do catálogo aos filtros, da ficha do vinho às videoaulas."
         />
 
         <div className="mt-16">

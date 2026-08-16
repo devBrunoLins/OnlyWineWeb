@@ -62,8 +62,8 @@ export default function Sobre() {
             </p>
             <p>
               A OnlyWine foi criada para reduzir essa distância. Reunimos num
-              único aplicativo quatro coisas que costumam estar espalhadas —
-              recomendação personalizada, informação clara sobre cada rótulo,
+              único aplicativo quatro coisas que costumam estar espalhadas — um
+              catálogo com filtros, informação clara sobre cada rótulo,
               conteúdo educativo em vídeo e a compra com entrega. Nada disso
               exige assinatura: as videoaulas são gratuitas e a loja funciona para
               qualquer pessoa cadastrada.
@@ -85,8 +85,8 @@ export default function Sobre() {
         <div className="mt-14 grid gap-px overflow-hidden rounded-2xl bg-rule sm:grid-cols-2">
           {[
             {
-              title: "Descoberta com curadoria",
-              text: "Recomendações que partem do gosto de cada pessoa e explicam o motivo de cada indicação.",
+              title: "Catálogo explicado",
+              text: "Tipo, uva, origem, avaliação e preço visíveis já na listagem, com filtros por país, estilo e faixa de preço.",
             },
             {
               title: "Loja com entrega",

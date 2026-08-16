@@ -231,31 +231,35 @@ export default function Aprenda() {
           tone="dark"
           eyebrow="No aplicativo"
           title="As videoaulas continuam a conversa"
-          lead="No app OnlyWine este conteúdo vira aula em vídeo, com degustação demonstrada na prática. Tudo liberado para qualquer pessoa cadastrada — assinar o clube OnlyWinner não é necessário."
+          lead="No app OnlyWine este conteúdo vira aula em vídeo, com degustação demonstrada na prática. Aulas curtas, para assistir entre uma coisa e outra — e liberadas para qualquer pessoa cadastrada, sem precisar do clube OnlyWinner."
         />
 
-        {/*
-          TODO(conteúdo): substituir pela lista real de videoaulas gravadas —
-          títulos e duração. Enquanto isso, descrevemos apenas os temas, que são
-          verificáveis. Não inventar nomes de aulas que não existem.
-        */}
-        <ul className="mt-14 grid gap-px overflow-hidden rounded-2xl bg-white/12 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Títulos e durações conforme a aba Vídeos do app. A série continua
+            além da Aula 04, por isso a lista abaixo não se apresenta como
+            completa. */}
+        <ul className="mt-14 grid gap-px overflow-hidden rounded-2xl bg-white/12 sm:grid-cols-2 lg:grid-cols-5">
           {[
-            "Degustação passo a passo",
-            "Uvas e regiões na prática",
-            "Serviço: taça, temperatura e decantação",
-            "Montando sua primeira adega",
-          ].map((topic, index) => (
-            <li key={topic} className="bg-deep p-8">
-              <span className="font-heading text-3xl font-semibold text-gold/40">
-                {String(index + 1).padStart(2, "0")}
+            { title: "Apresentação", duration: "0:32" },
+            { title: "Aula 01", duration: "2:50" },
+            { title: "Aula 02", duration: "3:15" },
+            { title: "Aula 03", duration: "3:12" },
+            { title: "Aula 04", duration: "2 min" },
+          ].map((lesson) => (
+            <li key={lesson.title} className="bg-deep p-8">
+              <span className="font-sans text-[0.6875rem] font-bold tracking-[0.18em] text-gold/70">
+                {lesson.duration}
               </span>
-              <h3 className="mt-4 font-heading text-lg leading-snug font-semibold text-white">
-                {topic}
+              <h3 className="mt-3 font-heading text-lg leading-snug font-semibold text-white">
+                {lesson.title}
               </h3>
             </li>
           ))}
         </ul>
+
+        <p className="mt-8 text-sm text-deep-foreground/55">
+          Cada aula pode ser avaliada e comentada dentro do app. A série segue
+          além da Aula 04.
+        </p>
 
         <p className="mt-10 text-sm text-deep-foreground/55">
           O aplicativo está em preparação para publicação nas lojas.{" "}

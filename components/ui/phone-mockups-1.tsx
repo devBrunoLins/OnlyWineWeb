@@ -17,7 +17,7 @@ import { publicFileExists } from "@/lib/public-assets";
  */
 const screens: ImageItem[] = [
   {
-    src: "/IntroScreen.png",
+    src: "/app/IntroScreen.png",
     alt: "Tela de boas-vindas do aplicativo OnlyWine",
     label: "Boas-vindas",
   },

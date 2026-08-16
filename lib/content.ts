@@ -15,64 +15,70 @@ export type Feature = {
   eyebrow: string;
 };
 
+/**
+ * Cada item descreve o que aparece no screenshot correspondente. Nada aqui
+ * afirma recurso que não esteja visível em tela — o site não pode prometer
+ * mais do que o app entrega.
+ */
 export const features: Feature[] = [
   {
-    eyebrow: "Descoberta",
-    title: "Curadoria que parte do seu gosto",
+    eyebrow: "Catálogo",
+    title: "Os vinhos explicados já na vitrine",
     description:
-      "Você responde o que costuma beber, o quanto quer gastar e para que ocasião. " +
-      "A partir daí o OnlyWine sugere rótulos que fazem sentido para o seu paladar — " +
-      "e explica o porquê de cada indicação, em vez de só mostrar uma vitrine.",
-    image: "/app/descoberta.png",
+      "Cada rótulo aparece com tipo, uva, país de origem, avaliação e preço por " +
+      "garrafa — sem precisar abrir para descobrir o básico. A busca aceita texto " +
+      "ou voz, e o coração salva o vinho nos favoritos com um toque.",
+    image: "/app/HomeScreen.PNG",
+  },
+  {
+    eyebrow: "Busca e filtros",
+    title: "Filtre por país, tipo e preço",
+    description:
+      "Itália, França, Espanha, Estados Unidos e outros países; espumante, tinto " +
+      "ou branco; e uma faixa de preço que você define. Serve tanto para quem sabe " +
+      "o que procura quanto para quem só tem um limite de gasto em mente.",
+    image: "/app/FilterPage.PNG",
   },
   {
     eyebrow: "Ficha do vinho",
     title: "Cada rótulo explicado em português claro",
     description:
-      "Uva, região, corpo, acidez, temperatura de serviço e com o que combina. " +
+      "Origem, safra, preço médio, estilo, uva e com o que o vinho combina. " +
       "Sem jargão de sommelier e sem aquelas notas de degustação que citam frutas " +
       "que ninguém nunca provou.",
-    image: "/app/ficha-do-vinho.png",
+    image: "/app/DetailPage.PNG",
   },
   {
-    eyebrow: "Compra e entrega",
-    title: "Do carrinho até a sua porta",
+    eyebrow: "Entrega",
+    title: "Seus endereços, prontos para o pedido",
     description:
-      "Monte o carrinho, salve seus endereços e acompanhe o pedido pelo app. " +
-      "A entrega é conferida na porta com apresentação de documento: bebida " +
-      "alcoólica só é entregue para maiores de 18 anos.",
-    image: "/app/carrinho.png",
-  },
-  {
-    eyebrow: "Sua adega",
-    title: "Favoritos e histórico que viram memória",
-    description:
-      "Marque o que gostou, registre o que achou e volte a encontrar aquele vinho " +
-      "de um jantar específico. Com o tempo, seus favoritos afinam as recomendações.",
-    image: "/app/favoritos.png",
+      "Busque por CEP ou endereço, use a localização do celular ou escolha um " +
+      "endereço já salvo. O carrinho e o acompanhamento do pedido ficam no mesmo " +
+      "app — e a entrega de bebida alcoólica exige 18 anos comprovados.",
+    image: "/app/Location.PNG",
   },
   {
     eyebrow: "Videoaulas",
-    title: "Aprender sobre vinho, de graça",
+    title: "Aulas curtas, e de graça",
     description:
-      "O app traz videoaulas gratuitas, liberadas para qualquer pessoa cadastrada — " +
-      "não é preciso assinar nada para assistir. É o jeito mais rápido de sair do " +
-      "\"eu não entendo nada de vinho\".",
-    image: "/app/videoaulas.png",
+      "Uma série de aulas de dois a três minutos, gravadas em vídeo e liberadas " +
+      "para qualquer pessoa cadastrada — não é preciso assinar nada. Dá para " +
+      "avaliar e comentar cada aula dentro do app.",
+    image: "/app/VideosPage.PNG",
   },
 ];
 
 export const steps = [
   {
-    title: "Baixe e conte seu gosto",
+    title: "Baixe e crie sua conta",
     description:
-      "Criar a conta leva menos de um minuto. Algumas perguntas rápidas sobre o que " +
-      "você já bebeu e do que gostou bastam para o app começar a te entender.",
+      "Leva menos de um minuto. Depois é só informar o endereço de entrega — por " +
+      "CEP, por busca ou pela localização do celular.",
   },
   {
-    title: "Descubra com curadoria",
+    title: "Explore e entenda",
     description:
-      "Receba indicações explicadas, compare rótulos lado a lado e assista às " +
+      "Filtre por país, tipo e preço, leia a ficha de cada rótulo e assista às " +
       "videoaulas quando quiser entender o que está bebendo.",
   },
   {
@@ -115,7 +121,7 @@ export const faqs: Faq[] = [
     question: "O que é o OnlyWine?",
     answer:
       "É um aplicativo brasileiro que reúne quatro coisas em um só lugar: descoberta " +
-      "de vinhos com curadoria baseada no seu gosto, uma loja com entrega em casa, " +
+      "de vinhos com catálogo explicado e filtros, uma loja com entrega em casa, " +
       "videoaulas gratuitas sobre vinho e o clube de assinatura OnlyWinner.",
   },
   {
